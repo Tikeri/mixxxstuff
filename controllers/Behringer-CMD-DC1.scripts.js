@@ -1,7 +1,9 @@
 function cmddc1 () {}
 // Behringer CMD DC-1 Midi interface script for Mixxx Software
 // Author  : Tiger <tiger@braineed.org> / Tiger #Mixxx@irc.freenode.net
-// Version : 0.1.2
+
+cmddc1.scriptVersion = "0.1.3";
+cmddc1.softVRequired  = "2.2.3";
 
 // Default channel of this device
 // We substitute 1 because count starts from 0 (See MIDI specs)
@@ -40,7 +42,7 @@ cmddc1.SFXControls = {
 cmddc1.deckCnt = 4;
 
 // Stores the active cue mode as string
-cmddc1.cueMode = undefined;
+cmddc1.cueActMode = undefined;
 
 // Cue mode physical control addresses
 cmddc1.setCueCtrl = 0x14;
@@ -70,7 +72,7 @@ cmddc1.initDecksLEDs = function() {
         midi.sendShortMsg(cmddc1.defch | cmddc1.LEDCmd, cmddc1.deckControls[i], cmddc1.LEDOff);
     }
 };
-
+// 
 /*
  * Initialize decks status for active mode
  */
@@ -116,7 +118,7 @@ cmddc1.initCueMode = function() {
     midi.sendShortMsg(cmddc1.defch | cmddc1.LEDCmd, cmddc1.gotoCueCtrl, cmddc1.LEDOff);
     midi.sendShortMsg(cmddc1.defch | cmddc1.LEDCmd, cmddc1.gotoNPlayCueCtrl, cmddc1.LEDOff);
     midi.sendShortMsg(cmddc1.defch | cmddc1.LEDCmd, cmddc1.clearCueCtrl, cmddc1.LEDOff);
-    cmddc1.cueMode = undefined;
+    cmddc1.cueActMode = undefined;
 }
 
 /*
@@ -126,27 +128,27 @@ cmddc1.cueMode = function(channel, control, value, status, group) {
     
     cmddc1.initCueMode();
     
-    var cueModes = [ 'clear','set','goto','gotoandplay' ];
+    var cueModes = [ 'set','goto','gotoandplay', 'clear' ];
     
     switch(control) {
         case cmddc1.setCueCtrl:
-            cmddc1.cueMode = cueModes[1];
+            cmddc1.cueActMode = cueModes[0];
             break;
         case cmddc1.gotoCueCtrl:
-            cmddc1.cueMode = cueModes[2];
+            cmddc1.cueActMode = cueModes[1];
             break;
         case cmddc1.gotoNPlayCueCtrl:
-            cmddc1.cueMode = cueModes[3];
+            cmddc1.cueActMode = cueModes[2];
             break;
         case cmddc1.clearCueCtrl:
-            cmddc1.cueMode = cueModes[0];
+            cmddc1.cueActMode = cueModes[3];
             break;
         default:
-            cmddc1.cueMode = undefined;
+            cmddc1.cueActMode = undefined;
             break;
     }
     
-    if(cmddc1.cueMode !== undefined) {
+    if(cmddc1.cueActMode !== undefined) {
         midi.sendShortMsg(cmddc1.defch | cmddc1.LEDCmd, control, cmddc1.LEDBlueBlink);
     }
 };
@@ -155,14 +157,24 @@ cmddc1.cueMode = function(channel, control, value, status, group) {
  * Set/Clear/Goto/GotoAndPlay the cues on selected decks
  */
 cmddc1.setCues = function(channel, control, value, status, group) {
-    if(cmddc1.cueMode !== undefined) {
+    if(cmddc1.cueActMode !== undefined) {
         var changrp="[Channel";
         var cuepref = "hotcue_";
-        var cuesuf = [ 'clear','set','goto','gotoandplay' ];
         
         for(var i=1; i <= cmddc1.deckCnt; i++) {
             if(cmddc1.deckStatus[i] == true) {
-                engine.setValue(changrp+i+"]", cuepref+cmddc1.CUESControls[control]+"_"+cmddc1.cueMode, value);
+                engine.setValue(changrp+i+"]", cuepref+cmddc1.CUESControls[control]+"_"+cmddc1.cueActMode, value);
+                
+                var LEDColor = undefined;
+                
+                if(cmddc1.cueActMode == "set" ||  cmddc1.cueActMode == "clear") {
+                    if(cmddc1.cueActMode == "set") {
+                        LEDColor = cmddc1.LEDBlue;
+                    } else {
+                        LEDColor = cmddc1.LEDOff;
+                    }
+                    midi.sendShortMsg(cmddc1.defch | cmddc1.LEDCmd, control, LEDColor);
+                }
             }
         }
     }
@@ -240,8 +252,8 @@ cmddc1.connectFXEncoders = function() {
     
     for(var i=1; i <= cmddc1.FXCtrlCnt; i++) {
         cmddc1.FXControls[grpref+i+"]."+grpara] = fxctrl;
-        engine.connectControl(grpref+i+"]", grpara, "cmddc1.encoderFXLitLED");
-        engine.trigger(grpref+i+"]", grpara);
+        var conn = engine.makeConnection(grpref+i+"]", grpara, cmddc1.encoderFXLitLED);
+        conn.trigger();
         fxctrl++;
     }
 };
@@ -257,9 +269,9 @@ cmddc1.connectSFXEncoders = function() {
         // A virtual line is added with same control for compatibility with encoderFXLitLED()
         cmddc1.FXControls[cmddc1.SFXControls[sfxctrl]] = sfxctrl;
         
-        engine.connectControl(sfxgrparam[0], sfxgrparam[1], "cmddc1.encoderFXLitLED");
+        var conn = engine.makeConnection(sfxgrparam[0], sfxgrparam[1], cmddc1.encoderFXLitLED);
         // Init LEDs of SFX Encoders
-        engine.trigger(sfxgrparam[0], sfxgrparam[1]);
+        conn.trigger();
     }
 };
 
@@ -271,6 +283,7 @@ cmddc1.init = function() {
     cmddc1.connectSFXEncoders();
     cmddc1.initDecksStatus();
     cmddc1.initCUEControls();
+    print("Script loaded successfully, version " + cmddc1.scriptVersion + " , requires Mixxx version " + cmddc1.softVRequired);
 };
 
 /*** Destructor ***/

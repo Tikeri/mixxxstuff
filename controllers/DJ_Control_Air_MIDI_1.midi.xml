@@ -1,10 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<MixxxControllerPreset mixxxVersion="1.10.0+" schemaVersion="1">
+<MixxxControllerPreset schemaVersion="1" mixxxVersion="2.2.3+">
     <info>
         <name>Hercules DJ Control AIR</name>
-        <author>rojaro</author>
-        <description>Mapping for Hercules DJ Control AIR</description>
+        <author>Tiger &lt;tiger@braineed.org&gt;</author>
+        <description>Hercules DJ Control AIR Mixxx Mapping</description>
         <forums>http://www.mixxx.org/forums/viewtopic.php?f=7&amp;t=3263</forums>
+        <wiki>http://www.mixxx.org/wiki/doku.php/hercules_dj_control_air</wiki>
     </info>
     <controller id="DJ">
         <scriptfiles>
@@ -42,9 +43,9 @@
                 </options>
             </control>
             <control>
-                <group>[Master]</group>
-                <key>HerculesAir.spinback</key>
-                <description>Use Scratch Button to toogle spinback effect</description>
+                <group></group>
+                <key>HerculesAir.switchDecksMode</key>
+                <description>Switch to Decks C &amp; D</description>
                 <status>0x90</status>
                 <midino>0x2D</midino>
                 <options>
@@ -52,9 +53,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>next_chain</key>
-                <description>Select next effect in fourth unit</description>
+                <group>[Channel2]</group>
+                <key>reverse</key>
+                <description>Play Reverse Deck B</description>
                 <status>0x90</status>
                 <midino>0x17</midino>
                 <options>
@@ -73,8 +74,8 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>beats_translate_curpos</key>
-                <description>MIDI Learned from 9 messages.</description>
+                <key>reverse</key>
+                <description>Play Reverse Deck A</description>
                 <status>0x90</status>
                 <midino>0x01</midino>
                 <options>
@@ -164,21 +165,21 @@
             <control>
                 <group>[Channel2]</group>
                 <key>sync_enabled</key>
-                <description>Sync Mode Deck B</description>
+                <description>Beat Sync B</description>
                 <status>0x90</status>
                 <midino>0x29</midino>
                 <options>
-                    <normal/>
+                    <button/>
                 </options>
             </control>
             <control>
                 <group>[Channel1]</group>
                 <key>sync_enabled</key>
-                <description>Sync mode Deck A</description>
+                <description>Beat Sync A</description>
                 <status>0x90</status>
                 <midino>0x13</midino>
                 <options>
-                    <normal/>
+                    <button/>
                 </options>
             </control>
             <control>
@@ -222,6 +223,15 @@
                 </options>
             </control>
             <control>
+                <group>[Master]</group>
+                <key>HerculesAir.headVol</key>
+                <status>0x90</status>
+                <midino>0x3C</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
                 <group>[Channel2]</group>
                 <key>fwd</key>
                 <description>>> Deck B</description>
@@ -239,6 +249,15 @@
                 <midino>0x10</midino>
                 <options>
                     <button/>
+                </options>
+            </control>
+            <control>
+                <group>[Master]</group>
+                <key>HerculesAir.headVol</key>
+                <status>0x90</status>
+                <midino>0x3B</midino>
+                <options>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -274,7 +293,7 @@
             <control>
                 <group>[Channel2]</group>
                 <key>loop_halve</key>
-                <description>Halve loop length Deck B</description>
+                <description>Halve Loop Deck B</description>
                 <status>0x90</status>
                 <midino>0x24</midino>
                 <options>
@@ -282,45 +301,9 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>super1</key>
-                <status>0xB0</status>
-                <midino>0x3F</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>super1</key>
-                <status>0xB0</status>
-                <midino>0x3F</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>super1</key>
-                <status>0xB0</status>
-                <midino>0x3F</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1]</group>
-                <key>super1</key>
-                <status>0xB0</status>
-                <midino>0x3F</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
                 <group>[Channel1]</group>
                 <key>loop_halve</key>
-                <description>Halve loop length Deck A</description>
+                <description>Halve Loop Deck A</description>
                 <status>0x90</status>
                 <midino>0x0E</midino>
                 <options>
@@ -340,7 +323,7 @@
             <control>
                 <group>[Channel2]</group>
                 <key>loop_double</key>
-                <description>Double loop length Deck B</description>
+                <description>Double Loop Deck B</description>
                 <status>0x90</status>
                 <midino>0x23</midino>
                 <options>
@@ -360,7 +343,7 @@
             <control>
                 <group>[Channel1]</group>
                 <key>loop_double</key>
-                <description>Double loop length Deck A</description>
+                <description>Double Loop Deck A</description>
                 <status>0x90</status>
                 <midino>0x0D</midino>
                 <options>
@@ -400,7 +383,7 @@
             <control>
                 <group>[Channel2]</group>
                 <key>slip_enabled</key>
-                <description>Toggle loop slip mode Deck B</description>
+                <description>Loop Slip mode Deck B</description>
                 <status>0x90</status>
                 <midino>0x21</midino>
                 <options>
@@ -410,7 +393,7 @@
             <control>
                 <group>[Channel1]</group>
                 <key>slip_enabled</key>
-                <description>Toggle loop slip mode Deck A</description>
+                <description>Loop Slip mode Deck A</description>
                 <status>0x90</status>
                 <midino>0x0B</midino>
                 <options>
@@ -588,6 +571,25 @@
                 </options>
             </control>
             <control>
+                <group>[Channel1]</group>
+                <key>keylock</key>
+                <status>0x80</status>
+                <midino>0x04</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[AutoDJ]</group>
+                <key>enabled</key>
+                <description>Up button to toggle Auto DJ</description>
+                <status>0x90</status>
+                <midino>0x32</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
                 <group>[Sampler2]</group>
                 <key>HerculesAir.sampler</key>
                 <description>Sampler2 Start/Stop Deck A</description>
@@ -613,6 +615,25 @@
                 <description>Treble Deck A</description>
                 <status>0xB0</status>
                 <midino>0x37</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>quantize</key>
+                <status>0x80</status>
+                <midino>0x03</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[AutoDJ]</group>
+                <key>shuffle_playlist</key>
+                <description>Down Button to shuffle Auto DJ playlist</description>
+                <status>0x90</status>
+                <midino>0x31</midino>
                 <options>
                     <normal/>
                 </options>
@@ -650,7 +671,7 @@
             <control>
                 <group>[Recording]</group>
                 <key>toggle_recording</key>
-                <description>Toggle Mix recording</description>
+                <description>Record mix</description>
                 <status>0x90</status>
                 <midino>0x30</midino>
                 <options>
@@ -699,20 +720,20 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>rate</key>
-                <description>Pitchslider Deck A</description>
-                <status>0xB0</status>
-                <midino>0x34</midino>
+                <key>quantize</key>
+                <description>Quantize Loops/Hot-Cues Deck A</description>
+                <status>0x90</status>
+                <midino>0x03</midino>
                 <options>
                     <normal/>
                 </options>
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>quantize</key>
-                <description>Quantize Loops/Hot-Cues Deck A</description>
-                <status>0x90</status>
-                <midino>0x03</midino>
+                <key>rate</key>
+                <description>Pitchslider Deck A</description>
+                <status>0xB0</status>
+                <midino>0x34</midino>
                 <options>
                     <normal/>
                 </options>
@@ -729,6 +750,14 @@
             </control>
         </controls>
         <outputs>
+            <output>
+                <group>[Channel1]</group>
+                <key>sync_enabled</key>
+                <description>Tap to Sync, Hold to toggle Sync Mode Deck A</description>
+                <status>0x90</status>
+                <midino>0x13</midino>
+                <minimum>0.1</minimum>
+            </output>
             <output>
                 <group>[Channel2]</group>
                 <key>loop_enabled</key>
@@ -751,7 +780,7 @@
                 <description>Listen Button Deck A LED</description>
                 <status>0x90</status>
                 <midino>0x14</midino>
-                <minimum>0.5</minimum>
+                <minimum>0.1</minimum>
             </output>
             <output>
                 <group>[Channel1]</group>
@@ -764,17 +793,17 @@
             <output>
                 <group>[Sampler3]</group>
                 <key>play</key>
-                <description>Sampler 3 LED Deck B</description>
+                <description>Sampler 3 LED Deck A</description>
                 <status>0x90</status>
-                <midino>0x1D</midino>
+                <midino>0x07</midino>
                 <minimum>0.1</minimum>
             </output>
             <output>
                 <group>[Sampler3]</group>
                 <key>play</key>
-                <description>Sampler 3 LED Deck A</description>
+                <description>Sampler 3 LED Deck B</description>
                 <status>0x90</status>
-                <midino>0x07</midino>
+                <midino>0x1D</midino>
                 <minimum>0.1</minimum>
             </output>
             <output>
@@ -786,11 +815,11 @@
                 <minimum>0.1</minimum>
             </output>
             <output>
-                <group>[Sampler1]</group>
-                <key>play</key>
-                <description>Sampler 1 LED Deck B</description>
+                <group>[Channel2]</group>
+                <key>reverse</key>
+                <description>Play Reverse Deck B</description>
                 <status>0x90</status>
-                <midino>0x1B</midino>
+                <midino>0x17</midino>
                 <minimum>0.1</minimum>
             </output>
             <output>
@@ -802,12 +831,36 @@
                 <minimum>0.1</minimum>
             </output>
             <output>
+                <group>[Sampler1]</group>
+                <key>play</key>
+                <description>Sampler 1 LED Deck B</description>
+                <status>0x90</status>
+                <midino>0x1B</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>cue_indicator</key>
+                <description>Cue Button Deck A</description>
+                <status>0x90</status>
+                <midino>0x11</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>slip_enabled</key>
+                <description>Loop Slip Deck B</description>
+                <status>0x90</status>
+                <midino>0x21</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
                 <group>[Channel1]</group>
                 <key>play</key>
                 <description>Play Button LED Deck A</description>
                 <status>0x90</status>
                 <midino>0x12</midino>
-                <minimum>0.5</minimum>
+                <minimum>0.1</minimum>
             </output>
             <output>
                 <group>[Channel1]</group>
@@ -823,7 +876,15 @@
                 <description>Listen Button Deck B LED</description>
                 <status>0x90</status>
                 <midino>0x2A</midino>
-                <minimum>0.5</minimum>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>sync_enabled</key>
+                <description>Tap to Sync, Hold to toggle Sync Mode Deck B</description>
+                <status>0x90</status>
+                <midino>0x29</midino>
+                <minimum>0.1</minimum>
             </output>
             <output>
                 <group>[Channel1]</group>
@@ -836,17 +897,17 @@
             <output>
                 <group>[Sampler4]</group>
                 <key>play</key>
-                <description>Sampler 4 LED Deck B</description>
+                <description>Sampler 4 LED Deck A</description>
                 <status>0x90</status>
-                <midino>0x1E</midino>
+                <midino>0x08</midino>
                 <minimum>0.1</minimum>
             </output>
             <output>
                 <group>[Sampler4]</group>
                 <key>play</key>
-                <description>Sampler 4 LED Deck A</description>
+                <description>Sampler 4 LED Deck B</description>
                 <status>0x90</status>
-                <midino>0x08</midino>
+                <midino>0x1E</midino>
                 <minimum>0.1</minimum>
             </output>
             <output>
@@ -860,17 +921,41 @@
             <output>
                 <group>[Sampler2]</group>
                 <key>play</key>
+                <description>Sampler 2 LED Deck A</description>
+                <status>0x90</status>
+                <midino>0x06</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Sampler2]</group>
+                <key>play</key>
                 <description>Sampler 2 LED Deck B</description>
                 <status>0x90</status>
                 <midino>0x1C</midino>
                 <minimum>0.1</minimum>
             </output>
             <output>
-                <group>[Sampler2]</group>
-                <key>play</key>
-                <description>Sampler 2 LED Deck A</description>
+                <group>[Channel1]</group>
+                <key>reverse</key>
+                <description>Play Reverse Deck A</description>
                 <status>0x90</status>
-                <midino>0x06</midino>
+                <midino>0x01</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>cue_indicator</key>
+                <description>Cue Button Deck B</description>
+                <status>0x90</status>
+                <midino>0x27</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>slip_enabled</key>
+                <description>Loop Slip Deck A</description>
+                <status>0x90</status>
+                <midino>0x0B</midino>
                 <minimum>0.1</minimum>
             </output>
             <output>
@@ -887,7 +972,7 @@
                 <description>Play Button LED Deck B</description>
                 <status>0x90</status>
                 <midino>0x28</midino>
-                <minimum>0.5</minimum>
+                <minimum>0.1</minimum>
             </output>
         </outputs>
     </controller>

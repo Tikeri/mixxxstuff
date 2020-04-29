@@ -1,7 +1,9 @@
 function cmddv1 () {}
 // Behringer CMD DV-1 Midi interface script for Mixxx Software
-// Author  : Tiger <tiger@braineed.org> / Tiger #Mixxx@irc.freenode.net
-// Version : 0.1.4
+// Author : Tiger <tiger@braineed.org> / Tiger #Mixxx@irc.freenode.net
+
+cmddv1.scriptVersion = "0.1.5";
+cmddv1.softVRequired  = "2.2.3";
 
 // Default channel of this device
 // We substitute 1 because count starts from 0 (See MIDI specs)
@@ -22,7 +24,7 @@ cmddv1.encLEDCnt = 16; // Ring of 15 LEDs -> 16 for round maths, special handlin
 cmddv1.encLEDUnit = 1/cmddv1.encLEDCnt;
 
 // Number of effects
-cmddv1.FXChainCnt = 5;
+cmddv1.FXChainCnt = 19; // Hardcoded but it exists a member ( [EffectRack1].num_effectunits )
 
 // Controls container for the effect chain selected
 // Encoders used for effect selection ( 2 physical * 4 virtual )
@@ -63,7 +65,7 @@ cmddv1.modeStatus = {
     "Double": false
 };
 
-// As there's no control to know the current mode selection, we need to store the last one
+// As there's no control to know the current mode selection, we need to store this last one
 cmddv1.lastMode = "none";
 
 // Stores the status of the erase button
@@ -88,7 +90,7 @@ cmddv1.CUECnt = 8;
 cmddv1.CUESControls = {};
 
 // Stores the physicals controls to their corresponding Modes and Decks
-// For futur use with connectControl
+// For futur use with a connected control
 cmddv1.deckCtrlsByModes = {};
 
 
@@ -107,7 +109,7 @@ cmddv1.initFXChains = function() {
 
 /*
  * Affect each pysical control to its corresponding Mode and Deck
- * For futur use with connectControl
+ * For futur use with connected control
  */
 cmddv1.initDeckModesCtrls = function(onlyMode) {
     var startctrl = cmddv1.modeStartCtrl;
@@ -179,7 +181,7 @@ cmddv1.initCUEControls = function() {
 };
 
 /*
- * Reset/Clear all or one mode status if 'onlyMode' is provided
+ * Reset/Clear all or only one mode status if 'onlyMode' is provided
  */
 cmddv1.clearModes = function(onlyMode) {
     for(var mode in (onlyMode !== undefined ? onlyMode : cmddv1.modeStatus) ) {
@@ -300,7 +302,7 @@ cmddv1.setCues = function(channel, control, value, status, group) {
 
 /*
  * Select and assign effect to LEDs
- * connectControled function
+ * Connected to a control
  */
 cmddv1.encoderFXSelLitLED = function(value, group, control) {
     // Turn LED on for the selected effect
@@ -339,16 +341,6 @@ cmddv1.encoderFXSelect = function(channel, control, value, status, group) {
     var nextRawCtrl = cmddv1.FXChainCtrlStart + (cmddv1.FXChainCtrlCnt * cmddv1.FXChainRawCnt);
     // Refresh selection value for the other effect physical raw
     cmddv1.FXChainSel[(control < nextRawCtrl ? control+16 : control-16)] = cmddv1.FXChainSel[control];
-    
-    // Update effect enabled LEDs
-    midi.sendShortMsg(cmddv1.defch | cmddv1.LEDCmd,
-                      control,
-                      (engine.getParameter(group, "enabled") == true ? cmddv1.LEDBlue : 0x00)
-         );
-    midi.sendShortMsg(cmddv1.defch | cmddv1.LEDCmd,
-                      (control < nextRawCtrl ? control+16 : control-16),
-                      (engine.getParameter(group, "enabled") == true ? cmddv1.LEDBlue : 0x00)
-         );
 };
 
 /*
@@ -387,7 +379,7 @@ cmddv1.encoderParamLEDValue = function(group, param) {
 
 /*
  * Turn on any encoder LED for a given value
- * connectControled function
+ * Connected to a control
  */
 cmddv1.encoderFXLitLED = function(value, group, control) {
     // Bright the corresponding LED(s)
@@ -400,7 +392,8 @@ cmddv1.encoderFXLitLED = function(value, group, control) {
 };
 
 /*
- * Initialize FX related variables and connectControl the effects parameters and selection
+ * Initialize FX related variables and connect the effects parameters and selection
+ * to their respectives controls
  */
 cmddv1.connectFXEncoders = function() {
     var fxraw = 1; // We start from raw 1 ...
@@ -422,7 +415,8 @@ cmddv1.connectFXEncoders = function() {
         for(var i=0; i < 2; i++) {
             // Add an entry and affect a physical control address to the effect chain selectors strings
             cmddv1.FXControls[cmddv1.FXChainRawPrefix+fxraw+grpref+fxunit+"]."+grchains[i]] = fxctrl;
-            engine.connectControl(grpref+fxunit+"]", grchains[i], "cmddv1.encoderFXSelLitLED");
+            //engine.connectControl(grpref+fxunit+"]", grchains[i], "cmddv1.encoderFXSelLitLED");
+            engine.makeConnection(grpref+fxunit+"]", grchains[i], cmddv1.encoderFXSelLitLED);
         }
         
         // Connect effect parameters
@@ -436,10 +430,11 @@ cmddv1.connectFXEncoders = function() {
             cmddv1.FXControls[cmddv1.FXChainRawPrefix+fxraw+fxgrp+"."+fxpar] = fxctrl;     
 
             if(fxraw == 1) {
-                engine.connectControl(fxgrp, fxpar, "cmddv1.encoderFXLitLED");
+                var conn = engine.makeConnection(fxgrp, fxpar, cmddv1.encoderFXLitLED);
                 // FIXME: If we don't trigger it, this will generate an error with the parameter1
                 // of the first selected effect (Not called dunno why..?)
-                engine.trigger(fxgrp, fxpar);
+                //conn.trigger();
+                // Looks to be fixed in Mixxx 2.2.3
             }
         }
         
@@ -459,9 +454,10 @@ cmddv1.connectSFXEncoders = function() {
         for(var i=1; i <= cmddv1.FXChainRawCnt; i++) {
             cmddv1.FXControls[cmddv1.FXChainRawPrefix+i+cmddv1.SFXControls[sfxctrl]] = sfxctrl;
         }
-        engine.connectControl(sfxgrparam[0], sfxgrparam[1], "cmddv1.encoderFXLitLED");
+        //engine.connectControl(sfxgrparam[0], sfxgrparam[1], "cmddv1.encoderFXLitLED");
+        var conn = engine.makeConnection(sfxgrparam[0], sfxgrparam[1], cmddv1.encoderFXLitLED);
         // Init LEDs of SFX Encoders
-        engine.trigger(sfxgrparam[0], sfxgrparam[1]);
+        conn.trigger(sfxgrparam[0], sfxgrparam[1]);
     }
 };
 
@@ -484,9 +480,10 @@ cmddv1.init = function() {
     cmddv1.initFXChains();
     cmddv1.connectFXEncoders();
     cmddv1.connectSFXEncoders();
-    //cmddv1.initDeckModesCtrls();
+    //cmddv1.initDeckModesCtrls(); // Not fully implemented yet
     cmddv1.initBeatRollLoopControls();
     cmddv1.initCUEControls();
+    print("Script loaded successfully, version " + cmddv1.scriptVersion + " , requires Mixxx version " + cmddv1.softVRequired);
 };
 
 /*** Destructor ***/

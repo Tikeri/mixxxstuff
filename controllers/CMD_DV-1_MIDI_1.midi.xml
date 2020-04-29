@@ -1,28 +1,49 @@
 <?xml version='1.0' encoding='utf-8'?>
-<MixxxControllerPreset schemaVersion="1" mixxxVersion="2.0.0+">
+<MixxxControllerPreset schemaVersion="1" mixxxVersion="2.2.3+">
     <info>
         <name>Behringer CMD DV-1 Presets for Mixxx</name>
-        <author>Tiger</author>
+        <author>Tiger &lt;tiger@braineed.org></author>
+        <description>Mixxx mapping XML file for Behringer CMD DV-1</description>
+        <forums>https://www.mixxx.org/forums/viewtopic.php?f=7&amp;t=7910</forums>
+        <wiki>https://www.mixxx.org/wiki/doku.php/behringer_cmd_dv-1</wiki>
     </info>
     <controller id="CMD">
         <scriptfiles>
-            <file functionprefix="cmddv1" filename="Behringer-CMD-DV1.scripts.js"/>
+            <file filename="Behringer-CMD-DV1.scripts.js" functionprefix="cmddv1"/>
         </scriptfiles>
         <controls>
             <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x96</status>
-                <midino>0x19</midino>
+                <group>[EffectRack1_EffectUnit1_Effect1]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x14</midino>
                 <options>
                     <normal/>
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit3]</group>
+                <group>[EffectRack1_EffectUnit1_Effect3]</group>
                 <key>enabled</key>
                 <status>0x86</status>
-                <midino>0x2C</midino>
+                <midino>0x14</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1_Effect2]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x14</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x86</status>
+                <midino>0x15</midino>
                 <options>
                     <normal/>
                 </options>
@@ -37,145 +58,10 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit3_Effect1].parameter2</group>
-                <key>cmddv1.encoderFXParam</key>
-                <status>0xB6</status>
-                <midino>0x1E</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddv1.setCues</key>
-                <status>0x96</status>
-                <midino>0x5A</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>cmddv1.enableDeck</key>
-                <status>0x96</status>
-                <midino>0x44</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>group_[Channel2]_enable</key>
-                <status>0x96</status>
-                <midino>0x2E</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>enabled</key>
-                <status>0x96</status>
-                <midino>0x18</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Master]_enable</key>
-                <status>0x86</status>
-                <midino>0x2B</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4_Effect1].parameter3</group>
-                <key>cmddv1.encoderFXParam</key>
-                <status>0xB6</status>
-                <midino>0x33</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x86</status>
-                <midino>0x15</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit3_Effect1].parameter1</group>
-                <key>cmddv1.encoderFXParam</key>
-                <status>0xB6</status>
-                <midino>0x1D</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddv1.setCues</key>
-                <status>0x96</status>
-                <midino>0x59</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel4]</group>
-                <key>cmddv1.enableDeck</key>
-                <status>0x96</status>
-                <midino>0x43</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x96</status>
-                <midino>0x2D</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
                 <group>[EffectRack1_EffectUnit1]</group>
                 <key>group_[Master]_enable</key>
-                <status>0x96</status>
+                <status>0x86</status>
                 <midino>0x17</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Channel2]_enable</key>
-                <status>0x86</status>
-                <midino>0x2A</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4_Effect1].parameter2</group>
-                <key>cmddv1.encoderFXParam</key>
-                <status>0xB6</status>
-                <midino>0x32</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1]</group>
-                <key>enabled</key>
-                <status>0x86</status>
-                <midino>0x14</midino>
                 <options>
                     <normal/>
                 </options>
@@ -190,55 +76,55 @@
                 </options>
             </control>
             <control>
-                <group></group>
-                <key>cmddv1.setCues</key>
-                <status>0x96</status>
-                <midino>0x58</midino>
+                <group>[EffectRack1_EffectUnit3_Effect1].parameter1</group>
+                <key>cmddv1.encoderFXParam</key>
+                <status>0xB6</status>
+                <midino>0x1D</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel3]</group>
-                <key>cmddv1.enableDeck</key>
-                <status>0x96</status>
-                <midino>0x42</midino>
+                <group>[EffectRack1_EffectUnit3_Effect1].parameter2</group>
+                <key>cmddv1.encoderFXParam</key>
+                <status>0xB6</status>
+                <midino>0x1E</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>enabled</key>
-                <status>0x96</status>
-                <midino>0x2C</midino>
+                <group>[EffectRack1_EffectUnit3_Effect1].parameter3</group>
+                <key>cmddv1.encoderFXParam</key>
+                <status>0xB6</status>
+                <midino>0x1F</midino>
                 <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1]</group>
-                <key>group_[Channel2]_enable</key>
-                <status>0x96</status>
-                <midino>0x16</midino>
-                <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
                 <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x86</status>
-                <midino>0x29</midino>
+                <key>cmddv1.encoderFXSelect</key>
+                <status>0xB6</status>
+                <midino>0x18</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit4_Effect1].parameter1</group>
+                <group>[EffectRack1_EffectUnit2_Effect1].parameter1</group>
                 <key>cmddv1.encoderFXParam</key>
                 <status>0xB6</status>
-                <midino>0x31</midino>
+                <midino>0x19</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect1].parameter2</group>
+                <key>cmddv1.encoderFXParam</key>
+                <status>0xB6</status>
+                <midino>0x1A</midino>
                 <options>
                     <script-binding/>
                 </options>
@@ -253,12 +139,192 @@
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>cmddv1.enableDeck</key>
-                <status>0x96</status>
-                <midino>0x41</midino>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>cmddv1.encoderFXSelect</key>
+                <status>0xB6</status>
+                <midino>0x14</midino>
                 <options>
                     <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1_Effect1].parameter1</group>
+                <key>cmddv1.encoderFXParam</key>
+                <status>0xB6</status>
+                <midino>0x15</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1_Effect1].parameter2</group>
+                <key>cmddv1.encoderFXParam</key>
+                <status>0xB6</status>
+                <midino>0x16</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1_Effect1].parameter3</group>
+                <key>cmddv1.encoderFXParam</key>
+                <status>0xB6</status>
+                <midino>0x17</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4_Effect3]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x30</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4_Effect2]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x30</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4_Effect1]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x30</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x96</status>
+                <midino>0x31</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x96</status>
+                <midino>0x32</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Master]_enable</key>
+                <status>0x96</status>
+                <midino>0x33</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3_Effect3]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x2C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3_Effect2]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x2C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3_Effect1]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x2C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x96</status>
+                <midino>0x2D</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x96</status>
+                <midino>0x2E</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Master]_enable</key>
+                <status>0x96</status>
+                <midino>0x2F</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect3]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x28</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect2]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x28</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect1]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x28</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x96</status>
+                <midino>0x29</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x96</status>
+                <midino>0x2A</midino>
+                <options>
+                    <normal/>
                 </options>
             </control>
             <control>
@@ -271,10 +337,352 @@
                 </options>
             </control>
             <control>
+                <group>[EffectRack1_EffectUnit1_Effect1]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x24</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1_Effect3]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x24</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1_Effect2]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x24</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
                 <group>[EffectRack1_EffectUnit1]</group>
                 <key>group_[Channel1]_enable</key>
                 <status>0x96</status>
-                <midino>0x15</midino>
+                <midino>0x25</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x96</status>
+                <midino>0x26</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Master]_enable</key>
+                <status>0x96</status>
+                <midino>0x27</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4_Effect1]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x20</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4_Effect2]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x20</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4_Effect3]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x20</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4_Effect3]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x30</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4_Effect2]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x30</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4_Effect1]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x30</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x96</status>
+                <midino>0x21</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x86</status>
+                <midino>0x31</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x96</status>
+                <midino>0x22</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x86</status>
+                <midino>0x32</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Master]_enable</key>
+                <status>0x96</status>
+                <midino>0x23</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Master]_enable</key>
+                <status>0x86</status>
+                <midino>0x33</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3_Effect3]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x2C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3_Effect2]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x2C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3_Effect1]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x2C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x86</status>
+                <midino>0x2D</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x86</status>
+                <midino>0x2E</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Master]_enable</key>
+                <status>0x86</status>
+                <midino>0x2F</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect3]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x28</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect2]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x28</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect1]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x28</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x86</status>
+                <midino>0x29</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x86</status>
+                <midino>0x2A</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Master]_enable</key>
+                <status>0x86</status>
+                <midino>0x2B</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1_Effect1]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x24</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1_Effect2]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x24</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1_Effect3]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x24</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x86</status>
+                <midino>0x25</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x86</status>
+                <midino>0x26</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Master]_enable</key>
+                <status>0x86</status>
+                <midino>0x27</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4_Effect1]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x20</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4_Effect2]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x20</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4_Effect3]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x20</midino>
                 <options>
                     <normal/>
                 </options>
@@ -289,66 +697,84 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>enabled</key>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel1]_enable</key>
                 <status>0x86</status>
-                <midino>0x28</midino>
+                <midino>0x21</midino>
                 <options>
                     <normal/>
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2_Effect1].parameter2</group>
+                <group>[EffectRack1_EffectUnit4_Effect1].parameter1</group>
                 <key>cmddv1.encoderFXParam</key>
                 <status>0xB6</status>
-                <midino>0x1A</midino>
+                <midino>0x31</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>cmddv1.enableDeck</key>
-                <status>0x96</status>
-                <midino>0x40</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddv1.setBeatModes</key>
-                <status>0x86</status>
-                <midino>0x53</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2]</group>
+                <group>[EffectRack1_EffectUnit4]</group>
                 <key>group_[Channel2]_enable</key>
-                <status>0x96</status>
-                <midino>0x2A</midino>
+                <status>0x86</status>
+                <midino>0x22</midino>
                 <options>
                     <normal/>
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1]</group>
-                <key>enabled</key>
-                <status>0x96</status>
-                <midino>0x14</midino>
+                <group>[EffectRack1_EffectUnit4_Effect1].parameter2</group>
+                <key>cmddv1.encoderFXParam</key>
+                <status>0xB6</status>
+                <midino>0x32</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1]</group>
+                <group>[EffectRack1_EffectUnit4]</group>
                 <key>group_[Master]_enable</key>
                 <status>0x86</status>
-                <midino>0x27</midino>
+                <midino>0x23</midino>
                 <options>
                     <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4_Effect1].parameter3</group>
+                <key>cmddv1.encoderFXParam</key>
+                <status>0xB6</status>
+                <midino>0x33</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>cmddv1.encoderFXSelect</key>
+                <status>0xB6</status>
+                <midino>0x2C</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3_Effect1].parameter1</group>
+                <key>cmddv1.encoderFXParam</key>
+                <status>0xB6</status>
+                <midino>0x2D</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3_Effect1].parameter2</group>
+                <key>cmddv1.encoderFXParam</key>
+                <status>0xB6</status>
+                <midino>0x2E</midino>
+                <options>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -361,208 +787,28 @@
                 </options>
             </control>
             <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>cmddv1.encoderFXSelect</key>
+                <status>0xB6</status>
+                <midino>0x28</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
                 <group>[EffectRack1_EffectUnit2_Effect1].parameter1</group>
                 <key>cmddv1.encoderFXParam</key>
                 <status>0xB6</status>
-                <midino>0x19</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddv1.toggleEraser</key>
-                <status>0x96</status>
-                <midino>0x55</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddv1.setBeatModes</key>
-                <status>0x86</status>
-                <midino>0x52</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x96</status>
                 <midino>0x29</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1]</group>
-                <key>group_[Channel2]_enable</key>
-                <status>0x86</status>
-                <midino>0x26</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit3_Effect1].parameter2</group>
+                <group>[EffectRack1_EffectUnit2_Effect1].parameter2</group>
                 <key>cmddv1.encoderFXParam</key>
                 <status>0xB6</status>
-                <midino>0x2E</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>cmddv1.encoderFXSelect</key>
-                <status>0xB6</status>
-                <midino>0x18</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>enabled</key>
-                <status>0x96</status>
-                <midino>0x28</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddv1.setBeatModes</key>
-                <status>0x86</status>
-                <midino>0x51</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2].pitch_adjust</group>
-                <key>cmddv1.encoderFXParam</key>
-                <status>0xB6</status>
-                <midino>0x43</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x86</status>
-                <midino>0x25</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit3_Effect1].parameter1</group>
-                <key>cmddv1.encoderFXParam</key>
-                <status>0xB6</status>
-                <midino>0x2D</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1_Effect1].parameter3</group>
-                <key>cmddv1.encoderFXParam</key>
-                <status>0xB6</status>
-                <midino>0x17</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddv1.setBeatModes</key>
-                <status>0x96</status>
-                <midino>0x53</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1]</group>
-                <key>group_[Master]_enable</key>
-                <status>0x96</status>
-                <midino>0x27</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddv1.setBeatModes</key>
-                <status>0x86</status>
-                <midino>0x50</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[QuickEffectRack1_[Channel2]].super1</group>
-                <key>cmddv1.encoderFXParam</key>
-                <status>0xB6</status>
-                <midino>0x42</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1]</group>
-                <key>enabled</key>
-                <status>0x86</status>
-                <midino>0x24</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>cmddv1.encoderFXSelect</key>
-                <status>0xB6</status>
-                <midino>0x2C</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1_Effect1].parameter2</group>
-                <key>cmddv1.encoderFXParam</key>
-                <status>0xB6</status>
-                <midino>0x16</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddv1.setBeatModes</key>
-                <status>0x96</status>
-                <midino>0x52</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1]</group>
-                <key>group_[Channel2]_enable</key>
-                <status>0x96</status>
-                <midino>0x26</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[QuickEffectRack1_[Channel1]].super1</group>
-                <key>cmddv1.encoderFXParam</key>
-                <status>0xB6</status>
-                <midino>0x41</midino>
+                <midino>0x2A</midino>
                 <options>
                     <script-binding/>
                 </options>
@@ -577,156 +823,30 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>group_[Master]_enable</key>
-                <status>0x86</status>
-                <midino>0x23</midino>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>cmddv1.encoderFXSelect</key>
+                <status>0xB6</status>
+                <midino>0x24</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
                 <group>[EffectRack1_EffectUnit1_Effect1].parameter1</group>
                 <key>cmddv1.encoderFXParam</key>
                 <status>0xB6</status>
-                <midino>0x15</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddv1.setBeatModes</key>
-                <status>0x96</status>
-                <midino>0x51</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x96</status>
                 <midino>0x25</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel1].pitch_adjust</group>
+                <group>[EffectRack1_EffectUnit1_Effect1].parameter2</group>
                 <key>cmddv1.encoderFXParam</key>
                 <status>0xB6</status>
-                <midino>0x40</midino>
+                <midino>0x26</midino>
                 <options>
                     <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>group_[Channel2]_enable</key>
-                <status>0x86</status>
-                <midino>0x22</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2_Effect1].parameter2</group>
-                <key>cmddv1.encoderFXParam</key>
-                <status>0xB6</status>
-                <midino>0x2A</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1]</group>
-                <key>cmddv1.encoderFXSelect</key>
-                <status>0xB6</status>
-                <midino>0x14</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddv1.setBeatModes</key>
-                <status>0x96</status>
-                <midino>0x50</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1]</group>
-                <key>enabled</key>
-                <status>0x96</status>
-                <midino>0x24</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x86</status>
-                <midino>0x21</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2_Effect1].parameter1</group>
-                <key>cmddv1.encoderFXParam</key>
-                <status>0xB6</status>
-                <midino>0x29</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>group_[Master]_enable</key>
-                <status>0x96</status>
-                <midino>0x23</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>enabled</key>
-                <status>0x86</status>
-                <midino>0x20</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>cmddv1.encoderFXSelect</key>
-                <status>0xB6</status>
-                <midino>0x28</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>group_[Channel2]_enable</key>
-                <status>0x96</status>
-                <midino>0x22</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>group_[Master]_enable</key>
-                <status>0x86</status>
-                <midino>0x1F</midino>
-                <options>
-                    <normal/>
                 </options>
             </control>
             <control>
@@ -740,272 +860,11 @@
             </control>
             <control>
                 <group>[EffectRack1_EffectUnit4]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x96</status>
-                <midino>0x21</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>group_[Channel2]_enable</key>
-                <status>0x86</status>
-                <midino>0x1E</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1_Effect1].parameter2</group>
-                <key>cmddv1.encoderFXParam</key>
-                <status>0xB6</status>
-                <midino>0x26</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>enabled</key>
-                <status>0x96</status>
-                <midino>0x20</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>group_[Master]_enable</key>
-                <status>0x86</status>
-                <midino>0x33</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x86</status>
-                <midino>0x1D</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1_Effect1].parameter1</group>
-                <key>cmddv1.encoderFXParam</key>
-                <status>0xB6</status>
-                <midino>0x25</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel4]</group>
-                <key>cmddv1.enableDeck</key>
-                <status>0x96</status>
-                <midino>0x4B</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>group_[Master]_enable</key>
-                <status>0x96</status>
-                <midino>0x1F</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>group_[Channel2]_enable</key>
-                <status>0x86</status>
-                <midino>0x32</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>enabled</key>
-                <status>0x86</status>
-                <midino>0x1C</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1]</group>
                 <key>cmddv1.encoderFXSelect</key>
                 <status>0xB6</status>
-                <midino>0x24</midino>
+                <midino>0x20</midino>
                 <options>
                     <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel3]</group>
-                <key>cmddv1.enableDeck</key>
-                <status>0x96</status>
-                <midino>0x4A</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>group_[Channel2]_enable</key>
-                <status>0x96</status>
-                <midino>0x1E</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x86</status>
-                <midino>0x31</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Master]_enable</key>
-                <status>0x86</status>
-                <midino>0x1B</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4_Effect1].parameter3</group>
-                <key>cmddv1.encoderFXParam</key>
-                <status>0xB6</status>
-                <midino>0x23</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddv1.setCues</key>
-                <status>0x96</status>
-                <midino>0x5F</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>cmddv1.enableDeck</key>
-                <status>0x96</status>
-                <midino>0x49</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>group_[Master]_enable</key>
-                <status>0x96</status>
-                <midino>0x33</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x96</status>
-                <midino>0x1D</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>enabled</key>
-                <status>0x86</status>
-                <midino>0x30</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Channel2]_enable</key>
-                <status>0x86</status>
-                <midino>0x1A</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4_Effect1].parameter2</group>
-                <key>cmddv1.encoderFXParam</key>
-                <status>0xB6</status>
-                <midino>0x22</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddv1.setCues</key>
-                <status>0x96</status>
-                <midino>0x5E</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>cmddv1.enableDeck</key>
-                <status>0x96</status>
-                <midino>0x48</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>group_[Channel2]_enable</key>
-                <status>0x96</status>
-                <midino>0x32</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>enabled</key>
-                <status>0x96</status>
-                <midino>0x1C</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>group_[Master]_enable</key>
-                <status>0x86</status>
-                <midino>0x2F</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x86</status>
-                <midino>0x19</midino>
-                <options>
-                    <normal/>
                 </options>
             </control>
             <control>
@@ -1018,64 +877,19 @@
                 </options>
             </control>
             <control>
-                <group></group>
-                <key>cmddv1.setCues</key>
-                <status>0x96</status>
-                <midino>0x5D</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel4]</group>
-                <key>cmddv1.enableDeck</key>
-                <status>0x96</status>
-                <midino>0x47</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x96</status>
-                <midino>0x31</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Master]_enable</key>
-                <status>0x96</status>
-                <midino>0x1B</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>group_[Channel2]_enable</key>
-                <status>0x86</status>
-                <midino>0x2E</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>enabled</key>
-                <status>0x86</status>
-                <midino>0x18</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>cmddv1.encoderFXSelect</key>
+                <group>[EffectRack1_EffectUnit4_Effect1].parameter2</group>
+                <key>cmddv1.encoderFXParam</key>
                 <status>0xB6</status>
-                <midino>0x20</midino>
+                <midino>0x22</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4_Effect1].parameter3</group>
+                <key>cmddv1.encoderFXParam</key>
+                <status>0xB6</status>
+                <midino>0x23</midino>
                 <options>
                     <script-binding/>
                 </options>
@@ -1090,55 +904,55 @@
                 </options>
             </control>
             <control>
-                <group>[Channel3]</group>
-                <key>cmddv1.enableDeck</key>
+                <group></group>
+                <key>cmddv1.setCues</key>
                 <status>0x96</status>
-                <midino>0x46</midino>
+                <midino>0x5D</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>enabled</key>
+                <group></group>
+                <key>cmddv1.setCues</key>
                 <status>0x96</status>
-                <midino>0x30</midino>
+                <midino>0x5E</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Channel2]_enable</key>
+                <group></group>
+                <key>cmddv1.setCues</key>
                 <status>0x96</status>
-                <midino>0x1A</midino>
+                <midino>0x5F</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x86</status>
-                <midino>0x2D</midino>
+                <group></group>
+                <key>cmddv1.setCues</key>
+                <status>0x96</status>
+                <midino>0x58</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1]</group>
-                <key>group_[Master]_enable</key>
-                <status>0x86</status>
-                <midino>0x17</midino>
+                <group></group>
+                <key>cmddv1.setCues</key>
+                <status>0x96</status>
+                <midino>0x59</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit3_Effect1].parameter3</group>
-                <key>cmddv1.encoderFXParam</key>
-                <status>0xB6</status>
-                <midino>0x1F</midino>
+                <group></group>
+                <key>cmddv1.setCues</key>
+                <status>0x96</status>
+                <midino>0x5A</midino>
                 <options>
                     <script-binding/>
                 </options>
@@ -1153,6 +967,106 @@
                 </options>
             </control>
             <control>
+                <group></group>
+                <key>cmddv1.toggleEraser</key>
+                <status>0x96</status>
+                <midino>0x55</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>slip_enabled</key>
+                <description>MIDI Learned from 2 messages.</description>
+                <status>0x96</status>
+                <midino>0x57</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>cmddv1.setBeatModes</key>
+                <status>0x96</status>
+                <midino>0x50</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>cmddv1.setBeatModes</key>
+                <status>0x96</status>
+                <midino>0x51</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>cmddv1.setBeatModes</key>
+                <status>0x96</status>
+                <midino>0x52</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>cmddv1.setBeatModes</key>
+                <status>0x96</status>
+                <midino>0x53</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>cmddv1.enableDeck</key>
+                <status>0x96</status>
+                <midino>0x48</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>cmddv1.enableDeck</key>
+                <status>0x96</status>
+                <midino>0x49</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>cmddv1.enableDeck</key>
+                <status>0x96</status>
+                <midino>0x4A</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>cmddv1.enableDeck</key>
+                <status>0x96</status>
+                <midino>0x4B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>cmddv1.enableDeck</key>
+                <status>0x96</status>
+                <midino>0x44</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
                 <group>[Channel2]</group>
                 <key>cmddv1.enableDeck</key>
                 <status>0x96</status>
@@ -1162,112 +1076,413 @@
                 </options>
             </control>
             <control>
+                <group>[Channel3]</group>
+                <key>cmddv1.enableDeck</key>
+                <status>0x96</status>
+                <midino>0x46</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>slip_enabled</key>
+                <description>MIDI Learned from 2 messages.</description>
+                <status>0x86</status>
+                <midino>0x57</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>cmddv1.enableDeck</key>
+                <status>0x96</status>
+                <midino>0x47</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>cmddv1.setBeatModes</key>
+                <status>0x86</status>
+                <midino>0x50</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>cmddv1.enableDeck</key>
+                <status>0x96</status>
+                <midino>0x40</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>cmddv1.setBeatModes</key>
+                <status>0x86</status>
+                <midino>0x51</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>cmddv1.enableDeck</key>
+                <status>0x96</status>
+                <midino>0x41</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>cmddv1.setBeatModes</key>
+                <status>0x86</status>
+                <midino>0x52</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>cmddv1.enableDeck</key>
+                <status>0x96</status>
+                <midino>0x42</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>cmddv1.setBeatModes</key>
+                <status>0x86</status>
+                <midino>0x53</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>cmddv1.enableDeck</key>
+                <status>0x96</status>
+                <midino>0x43</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1].pitch_adjust</group>
+                <key>cmddv1.encoderFXParam</key>
+                <status>0xB6</status>
+                <midino>0x40</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[QuickEffectRack1_[Channel1]].super1</group>
+                <key>cmddv1.encoderFXParam</key>
+                <status>0xB6</status>
+                <midino>0x41</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[QuickEffectRack1_[Channel2]].super1</group>
+                <key>cmddv1.encoderFXParam</key>
+                <status>0xB6</status>
+                <midino>0x42</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2].pitch_adjust</group>
+                <key>cmddv1.encoderFXParam</key>
+                <status>0xB6</status>
+                <midino>0x43</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3_Effect1]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x1C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3_Effect2]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x1C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3_Effect3]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x1C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x96</status>
+                <midino>0x1D</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x96</status>
+                <midino>0x1E</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
                 <group>[EffectRack1_EffectUnit3]</group>
                 <key>group_[Master]_enable</key>
                 <status>0x96</status>
-                <midino>0x2F</midino>
+                <midino>0x1F</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect2]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x18</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect3]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x18</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect1]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x18</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x96</status>
+                <midino>0x19</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x96</status>
+                <midino>0x1A</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Master]_enable</key>
+                <status>0x96</status>
+                <midino>0x1B</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1_Effect1]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x14</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1_Effect3]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x14</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1_Effect2]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x14</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x96</status>
+                <midino>0x15</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x96</status>
+                <midino>0x16</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Master]_enable</key>
+                <status>0x96</status>
+                <midino>0x17</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3_Effect1]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x1C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3_Effect2]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x1C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3_Effect3]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x1C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x86</status>
+                <midino>0x1D</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x86</status>
+                <midino>0x1E</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Master]_enable</key>
+                <status>0x86</status>
+                <midino>0x1F</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect2]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x18</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect3]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x18</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2_Effect1]</group>
+                <key>enabled</key>
+                <status>0x86</status>
+                <midino>0x18</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x86</status>
+                <midino>0x19</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x86</status>
+                <midino>0x1A</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Master]_enable</key>
+                <status>0x86</status>
+                <midino>0x1B</midino>
                 <options>
                     <normal/>
                 </options>
             </control>
         </controls>
         <outputs>
-            <output>
-                <group>[EffectRack1_EffectUnit1]</group>
-                <key>group_[Master]_enable</key>
-                <status>0x96</status>
-                <midino>0x27</midino>
-                <on>0x02</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit1]</group>
-                <key>group_[Master]_enable</key>
-                <status>0x96</status>
-                <midino>0x17</midino>
-                <on>0x02</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>group_[Channel2]_enable</key>
-                <status>0x96</status>
-                <midino>0x1E</midino>
-                <on>0x02</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>group_[Channel2]_enable</key>
-                <status>0x96</status>
-                <midino>0x2E</midino>
-                <on>0x02</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>enabled</key>
-                <status>0x96</status>
-                <midino>0x1C</midino>
-                <on>0x01</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>enabled</key>
-                <status>0x96</status>
-                <midino>0x2C</midino>
-                <on>0x01</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x96</status>
-                <midino>0x1D</midino>
-                <on>0x02</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit3]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x96</status>
-                <midino>0x2D</midino>
-                <on>0x02</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Channel2]_enable</key>
-                <status>0x96</status>
-                <midino>0x1A</midino>
-                <on>0x02</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Channel2]_enable</key>
-                <status>0x96</status>
-                <midino>0x2A</midino>
-                <on>0x02</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x96</status>
-                <midino>0x19</midino>
-                <on>0x02</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Channel1]_enable</key>
-                <status>0x96</status>
-                <midino>0x29</midino>
-                <on>0x02</on>
-                <minimum>0.1</minimum>
-            </output>
             <output>
                 <group>[EffectRack1_EffectUnit3]</group>
                 <key>group_[Master]_enable</key>
@@ -1281,38 +1496,6 @@
                 <key>group_[Master]_enable</key>
                 <status>0x96</status>
                 <midino>0x2F</midino>
-                <on>0x02</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>enabled</key>
-                <status>0x96</status>
-                <midino>0x18</midino>
-                <on>0x01</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>enabled</key>
-                <status>0x96</status>
-                <midino>0x28</midino>
-                <on>0x01</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Master]_enable</key>
-                <status>0x96</status>
-                <midino>0x1B</midino>
-                <on>0x02</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit2]</group>
-                <key>group_[Master]_enable</key>
-                <status>0x96</status>
-                <midino>0x2B</midino>
                 <on>0x02</on>
                 <minimum>0.1</minimum>
             </output>
@@ -1333,35 +1516,51 @@
                 <minimum>0.1</minimum>
             </output>
             <output>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>group_[Channel1]_enable</key>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Master]_enable</key>
                 <status>0x96</status>
-                <midino>0x21</midino>
+                <midino>0x1B</midino>
                 <on>0x02</on>
                 <minimum>0.1</minimum>
             </output>
             <output>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>group_[Channel1]_enable</key>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Master]_enable</key>
                 <status>0x96</status>
-                <midino>0x31</midino>
+                <midino>0x2B</midino>
                 <on>0x02</on>
                 <minimum>0.1</minimum>
             </output>
             <output>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>enabled</key>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Master]_enable</key>
                 <status>0x96</status>
-                <midino>0x20</midino>
-                <on>0x01</on>
+                <midino>0x27</midino>
+                <on>0x02</on>
                 <minimum>0.1</minimum>
             </output>
             <output>
-                <group>[EffectRack1_EffectUnit4]</group>
-                <key>enabled</key>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Master]_enable</key>
                 <status>0x96</status>
-                <midino>0x30</midino>
-                <on>0x01</on>
+                <midino>0x17</midino>
+                <on>0x02</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x96</status>
+                <midino>0x25</midino>
+                <on>0x02</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x96</status>
+                <midino>0x15</midino>
+                <on>0x02</on>
                 <minimum>0.1</minimum>
             </output>
             <output>
@@ -1397,15 +1596,23 @@
                 <minimum>0.1</minimum>
             </output>
             <output>
-                <group>[EffectRack1_EffectUnit1]</group>
-                <key>enabled</key>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel1]_enable</key>
                 <status>0x96</status>
-                <midino>0x24</midino>
-                <on>0x01</on>
+                <midino>0x19</midino>
+                <on>0x02</on>
                 <minimum>0.1</minimum>
             </output>
             <output>
-                <group>[EffectRack1_EffectUnit1]</group>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x96</status>
+                <midino>0x29</midino>
+                <on>0x02</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit1_Effect1]</group>
                 <key>enabled</key>
                 <status>0x96</status>
                 <midino>0x14</midino>
@@ -1413,18 +1620,122 @@
                 <minimum>0.1</minimum>
             </output>
             <output>
-                <group>[EffectRack1_EffectUnit1]</group>
+                <group>[EffectRack1_EffectUnit1_Effect1]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x24</midino>
+                <on>0x01</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit3_Effect1]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x1C</midino>
+                <on>0x01</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit3_Effect1]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x2C</midino>
+                <on>0x01</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit3]</group>
                 <key>group_[Channel1]_enable</key>
                 <status>0x96</status>
-                <midino>0x25</midino>
+                <midino>0x1D</midino>
                 <on>0x02</on>
                 <minimum>0.1</minimum>
             </output>
             <output>
-                <group>[EffectRack1_EffectUnit1]</group>
+                <group>[EffectRack1_EffectUnit3]</group>
                 <key>group_[Channel1]_enable</key>
                 <status>0x96</status>
-                <midino>0x15</midino>
+                <midino>0x2D</midino>
+                <on>0x02</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit4_Effect1]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x20</midino>
+                <on>0x01</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit4_Effect1]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x30</midino>
+                <on>0x01</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x96</status>
+                <midino>0x1A</midino>
+                <on>0x02</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x96</status>
+                <midino>0x2A</midino>
+                <on>0x02</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit2_Effect1]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x28</midino>
+                <on>0x01</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit2_Effect1]</group>
+                <key>enabled</key>
+                <status>0x96</status>
+                <midino>0x18</midino>
+                <on>0x01</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x96</status>
+                <midino>0x1E</midino>
+                <on>0x02</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel2]_enable</key>
+                <status>0x96</status>
+                <midino>0x2E</midino>
+                <on>0x02</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x96</status>
+                <midino>0x21</midino>
+                <on>0x02</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel1]_enable</key>
+                <status>0x96</status>
+                <midino>0x31</midino>
                 <on>0x02</on>
                 <minimum>0.1</minimum>
             </output>
