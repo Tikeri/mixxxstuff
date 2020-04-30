@@ -1,13 +1,12 @@
 function cmddc1 () {}
 // Behringer CMD DC-1 Midi interface script for Mixxx Software
-// Author  : Tiger <tiger@braineed.org> / Tiger #Mixxx@irc.freenode.net
+// Author : Tiger <tiger@braineed.org> / Tiger #Mixxx@irc.freenode.net
 
-cmddc1.scriptVersion = "0.1.3";
+cmddc1.scriptVersion = "0.1.4";
 cmddc1.softVRequired  = "2.2.3";
 
-// Default channel of this device
-// We substitute 1 because count starts from 0 (See MIDI specs)
-cmddc1.defch = 6-1;
+cmddc1.defch  = 6; // Default channel of this device
+cmddc1.defch -= 1; // We substitute 1 because count starts from 0 (See MIDI specs)
 
 cmddc1.LEDCmd = 0x90; // Command Byte : Note On
 cmddc1.LEDOff = 0x00; // LEDs can't be turned off, the Off status is LEDs to Orange/Amber color
@@ -56,9 +55,8 @@ cmddc1.deckStatus = {};
 cmddc1.deckControls = [ 0x00 , 0x03 ];
 
 // Physical controls related to cues buttons
-cmddc1.CUECnt = 16;
+cmddc1.CUESCnt = 16;
 cmddc1.CUESStartCtrl = 0x24;
-cmddc1.CUESStopCtrl = 0x33;
 
 // Stores the physicals controls addresses to their related hotcue number
 cmddc1.CUESControls = {};
@@ -72,7 +70,7 @@ cmddc1.initDecksLEDs = function() {
         midi.sendShortMsg(cmddc1.defch | cmddc1.LEDCmd, cmddc1.deckControls[i], cmddc1.LEDOff);
     }
 };
-// 
+ 
 /*
  * Initialize decks status for active mode
  */
@@ -83,19 +81,6 @@ cmddc1.initDecksStatus = function() {
     cmddc1.initDecksLEDs();
 };
 
-/*
- * Add/Set deck for cue mode
- */
-cmddc1.enableDeck = function(channel, control, value, status, group) {
-    var deck = group.substring( (group.length - 2), (group.length - 1));
-    
-    cmddc1.deckStatus[deck] ^= true;
-    
-    midi.sendShortMsg(cmddc1.defch | cmddc1.LEDCmd,
-                      control,
-                      (cmddc1.deckStatus[deck] == true ? cmddc1.LEDBlueBlink : cmddc1.LEDOff)
-         );
-};
 
 /*
  * Affect the hotcues to their respective physical control addresses
@@ -103,12 +88,37 @@ cmddc1.enableDeck = function(channel, control, value, status, group) {
 cmddc1.initCUEControls = function() {
     var cuectrl = cmddc1.CUESStartCtrl;
     
-    for(var i=1; i <= cmddc1.CUECnt; i++) {
+    for(var i=1; i <= cmddc1.CUESCnt; i++) {
         
         cmddc1.CUESControls[cuectrl] = i;
         cuectrl++;
     }
 };
+
+/*
+ * Refresh cues LEDs status (hotcue set / not set)
+ */
+cmddc1.refreshCuesLEDs = function(channel, offleds) {
+    var cctrl = cmddc1.CUESStartCtrl;
+    
+    var cuepref = "hotcue_";
+    var cuesuf  = "_enabled";
+    
+    var LEDCol = cmddc1.LEDOff;
+    
+    for(var i=1; i <= cmddc1.CUESCnt; i++) {
+        if(offleds == false) {
+            if(engine.getValue(channel, cuepref+i+cuesuf) == true) {
+                LEDCol = cmddc1.LEDBlue;
+            } else {
+                LEDCol = cmddc1.LEDOff;
+            }
+        }
+        
+        midi.sendShortMsg(cmddc1.defch | cmddc1.LEDCmd, cctrl, LEDCol);
+        cctrl++;
+    }
+}
 
 /*
  * Initialize the cue mode and associated LEDs
@@ -154,7 +164,7 @@ cmddc1.cueMode = function(channel, control, value, status, group) {
 };
 
 /*
- * Set/Clear/Goto/GotoAndPlay the cues on selected decks
+ * Set/Goto/GotoAndPlay/Clear the cues on selected decks
  */
 cmddc1.setCues = function(channel, control, value, status, group) {
     if(cmddc1.cueActMode !== undefined) {
@@ -191,6 +201,22 @@ cmddc1.initLEDs = function() {
     // Turn off all encoders ring of LEDs 
     for(var i=0x10; i <= 0x17; i++)
         midi.sendShortMsg(cmddc1.defch | cmddc1.encLEDCmd, i, cmddc1.encLEDOff);
+};
+
+/*
+ * Add/Set deck for cue mode
+ */
+cmddc1.enableDeck = function(channel, control, value, status, group) {
+    var deck = group.substring( (group.length - 2), (group.length - 1));
+    
+    cmddc1.refreshCuesLEDs(group, cmddc1.deckStatus[deck]);
+    
+    cmddc1.deckStatus[deck] ^= true;
+    
+    midi.sendShortMsg(cmddc1.defch | cmddc1.LEDCmd,
+                      control,
+                      (cmddc1.deckStatus[deck] == true ? cmddc1.LEDBlueBlink : cmddc1.LEDOff)
+         );
 };
 
 /*
@@ -283,7 +309,9 @@ cmddc1.init = function() {
     cmddc1.connectSFXEncoders();
     cmddc1.initDecksStatus();
     cmddc1.initCUEControls();
-    print("Script loaded successfully, version " + cmddc1.scriptVersion + " , requires Mixxx version " + cmddc1.softVRequired);
+    print("Script '" + this.name + 
+          "' loaded successfully, version " + cmddc1.scriptVersion + 
+          " , requires Mixxx version " + cmddc1.softVRequired);
 };
 
 /*** Destructor ***/
