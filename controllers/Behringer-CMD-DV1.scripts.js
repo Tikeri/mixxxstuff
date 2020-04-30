@@ -2,7 +2,7 @@ function cmddv1 () {}
 // Behringer CMD DV-1 Midi interface script for Mixxx Software
 // Author : Tiger <tiger@braineed.org> / Tiger #Mixxx@irc.freenode.net
 
-cmddv1.scriptVersion = "0.1.5";
+cmddv1.scriptVersion = "0.1.6";
 cmddv1.softVRequired  = "2.2.3";
 
 // Default channel of this device
@@ -10,8 +10,8 @@ cmddv1.softVRequired  = "2.2.3";
 cmddv1.defch = 7-1;
 
 cmddv1.LEDCmd = 0x90; // Command Byte : Note On
-cmddv1.LEDOff = 0x00; // LEDs can't be turned off, the Off status is LEDs to Orange/Amber color
-cmddv1.LEDBlue = 0x01;
+cmddv1.LEDOff = 0x01; // LEDs can't be turned off, the Off status is LEDs to Orange/Amber color
+cmddv1.LEDBlue = 0x00;
 cmddv1.LEDBlueBlink = 0x02;
 
 cmddv1.encLeft = 0x3F;
@@ -83,8 +83,10 @@ cmddv1.BeatRollLoopStopCtrl = 0x53;
 cmddv1.BeatRollLoopDownCtrls = {};
 cmddv1.BeatRollLoopUpCtrls = {};
 
-// Physical controls count of cues buttons
-cmddv1.CUECnt = 8;
+// Physical controls related to cues buttons
+cmddv1.CUESCnt = 8;
+cmddv1.CUESStartCtrl = 0x5C;
+cmddv1.CUESRowShift = 4;
 
 // Stores the physicals controls addresses to their related hotcue number
 cmddv1.CUESControls = {};
@@ -168,17 +170,55 @@ cmddv1.initBeatRollLoopControls = function() {
  * Affect the hotcues to their respective physical control addresses
  */
 cmddv1.initCUEControls = function() {
-    var cuectrl = 0x5C; // 1 to 4
+    var cuectrl = cmddv1.CUESStartCtrl; // 1 to 4
     var switchmid = 0x58; // 5 to 8
     
-    for(var i=1; i <= cmddv1.CUECnt; i++) {
-        if(i == (cmddv1.CUECnt/2 + 1) ) {
+    for(var i=1; i <= cmddv1.CUESCnt; i++) {
+        if(i == (cmddv1.CUESCnt/2 + 1) ) {
             cuectrl = switchmid;
         }
         cmddv1.CUESControls[cuectrl] = i;
         cuectrl++;
     }
 };
+
+/*
+ * Refresh cues LEDs status (hotcue set / not set)
+ */
+cmddv1.refreshCuesLEDs = function(channel, offleds) {
+    var sctrl = cmddv1.CUESStartCtrl;
+    var cctrl = sctrl;
+    
+    var cuepref = "hotcue_";
+    var cuesuf  = "_enabled";
+    
+    var LEDCol = cmddv1.LEDOff;
+    
+    for(var i=1; i <= cmddv1.CUESCnt; i++) {
+        /*
+         * Special handling of this curious hardware
+         * adressing map of this controller :
+         * [ 5 ] (a1) [ 6 ] (a2) [ 7 ] (a3) [ 8 ] (a4)
+         * [ 1 ] (a5) [ 2 ] (a6) [ 3 ] (a7) [ 4 ] (a8)
+        */
+        if(cctrl == (sctrl+cmddv1.CUESRowShift)) {
+            cctrl -= (cmddv1.CUESRowShift * 2);
+            sctrl = cctrl;
+        }
+        
+        if(offleds == false) {
+            if(engine.getValue(channel, cuepref+i+cuesuf) == true) {
+                LEDCol = cmddv1.LEDBlue;
+            } else {
+                LEDCol = cmddv1.LEDOff;
+            }
+        }
+        
+        midi.sendShortMsg(cmddv1.defch | cmddv1.LEDCmd, cctrl, LEDCol);
+        cctrl++;
+    }
+}
+
 
 /*
  * Reset/Clear all or only one mode status if 'onlyMode' is provided
@@ -240,6 +280,7 @@ cmddv1.enableDeck = function(channel, control, value, status, group) {
     var deck = group.substring( (group.length - 2), (group.length - 1));
     
     cmddv1.switchMode(control);
+    cmddv1.refreshCuesLEDs(group, cmddv1.deckStatus[deck]);
     cmddv1.deckStatus[deck] ^= true;
     
     midi.sendShortMsg(cmddv1.defch | cmddv1.LEDCmd,
@@ -258,11 +299,13 @@ cmddv1.setBeatModes = function(channel, control, value, status, group) {
         var ctrlsuf = "_activate";
         
         for(var i=1; i <= cmddv1.deckCnt; i++) {
-            if(cmddv1.modeStatus["Master"] == true && cmddv1.deckStatus[i] == true) {
-                engine.setValue(changrp+i+"]", ctrlpref+cmddv1.BeatRollLoopDownCtrls[control]+ctrlsuf, value);
-            }
-            if(cmddv1.modeStatus["Double"] == true && cmddv1.deckStatus[i] == true) {
-                engine.setValue(changrp+i+"]", ctrlpref+cmddv1.BeatRollLoopUpCtrls[control]+ctrlsuf, value);
+            if(cmddv1.deckStatus[i] == true) {
+                if(cmddv1.modeStatus["Master"] == true) {
+                    engine.setValue(changrp+i+"]", ctrlpref+cmddv1.BeatRollLoopDownCtrls[control]+ctrlsuf, value);
+                }
+                if(cmddv1.modeStatus["Double"] == true) {
+                    engine.setValue(changrp+i+"]", ctrlpref+cmddv1.BeatRollLoopUpCtrls[control]+ctrlsuf, value);
+                }
             }
         }
     }
@@ -278,24 +321,29 @@ cmddv1.setCues = function(channel, control, value, status, group) {
         var cuesuf = [ 'clear','set','goto','gotoandplay' ];
         
         for(var i=1; i <= cmddv1.deckCnt; i++) {
-            if(cmddv1.eraseStatus == true && cmddv1.deckStatus[i] == true) {
-                engine.setValue(changrp+i+"]", cuepref+cmddv1.CUESControls[control]+"_"+cuesuf[0], value);
-            } else {
-                if(cmddv1.modeStatus["Focus"] == true && cmddv1.deckStatus[i] == true) {
-                    // FIXME : value always points to 127, you can also set multiple times same hotcue
-                    // Affected version : <= 2.0.0
-                    engine.setValue(changrp+i+"]", cuepref+cmddv1.CUESControls[control]+"_"+cuesuf[1], value);
+            if(cmddv1.deckStatus[i] == true) {
+                var cuesufsel = undefined;
+                
+                if(cmddv1.eraseStatus == true) {
+                    cuesufsel = 0;
+                    midi.sendShortMsg(cmddv1.defch | cmddv1.LEDCmd, control, cmddv1.LEDOff);
+                } else {
+                    if(cmddv1.modeStatus["Focus"] == true) {
+                        cuesufsel = 1;
+                        midi.sendShortMsg(cmddv1.defch | cmddv1.LEDCmd, control, cmddv1.LEDBlue);
+                    }
+                    if(cmddv1.modeStatus["Master"] == true) {
+                        cuesufsel = 2;
+                    }
+                    if(cmddv1.modeStatus["Double"] == true) {
+                        cuesufsel = 3;
+                    }
                 }
-                if(cmddv1.modeStatus["Master"] == true && cmddv1.deckStatus[i] == true) {
-                    engine.setValue(changrp+i+"]", cuepref+cmddv1.CUESControls[control]+"_"+cuesuf[2], value);
-                }
-                if(cmddv1.modeStatus["Double"] == true && cmddv1.deckStatus[i] == true) {
-                    engine.setValue(changrp+i+"]", cuepref+cmddv1.CUESControls[control]+"_"+cuesuf[3], value);
+                
+                if(cuesufsel !== undefined ) {
+                    engine.setValue(changrp+i+"]", cuepref+cmddv1.CUESControls[control]+"_"+cuesuf[cuesufsel], value);
                 }
             }
-        }
-        if(cmddv1.eraseStatus == true) {
-            cmddv1.toggleEraser();
         }
     }
 };
@@ -415,7 +463,6 @@ cmddv1.connectFXEncoders = function() {
         for(var i=0; i < 2; i++) {
             // Add an entry and affect a physical control address to the effect chain selectors strings
             cmddv1.FXControls[cmddv1.FXChainRawPrefix+fxraw+grpref+fxunit+"]."+grchains[i]] = fxctrl;
-            //engine.connectControl(grpref+fxunit+"]", grchains[i], "cmddv1.encoderFXSelLitLED");
             engine.makeConnection(grpref+fxunit+"]", grchains[i], cmddv1.encoderFXSelLitLED);
         }
         
@@ -454,7 +501,6 @@ cmddv1.connectSFXEncoders = function() {
         for(var i=1; i <= cmddv1.FXChainRawCnt; i++) {
             cmddv1.FXControls[cmddv1.FXChainRawPrefix+i+cmddv1.SFXControls[sfxctrl]] = sfxctrl;
         }
-        //engine.connectControl(sfxgrparam[0], sfxgrparam[1], "cmddv1.encoderFXLitLED");
         var conn = engine.makeConnection(sfxgrparam[0], sfxgrparam[1], cmddv1.encoderFXLitLED);
         // Init LEDs of SFX Encoders
         conn.trigger(sfxgrparam[0], sfxgrparam[1]);
@@ -483,7 +529,9 @@ cmddv1.init = function() {
     //cmddv1.initDeckModesCtrls(); // Not fully implemented yet
     cmddv1.initBeatRollLoopControls();
     cmddv1.initCUEControls();
-    print("Script loaded successfully, version " + cmddv1.scriptVersion + " , requires Mixxx version " + cmddv1.softVRequired);
+    print("Script '" + this.name + 
+          "' loaded successfully, version " + cmddv1.scriptVersion +  
+          " , requires Mixxx version " + cmddv1.softVRequired);
 };
 
 /*** Destructor ***/
