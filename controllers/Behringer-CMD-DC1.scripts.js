@@ -2,7 +2,7 @@ function cmddc1 () {}
 // Behringer CMD DC-1 Midi interface script for Mixxx Software
 // Author : Tiger <tiger@braineed.org> / Tiger #Mixxx@irc.freenode.net
 
-cmddc1.scriptVersion = "0.1.4";
+cmddc1.scriptVersion = "0.1.5";
 cmddc1.softVRequired  = "2.2.3";
 
 cmddc1.defch  = 6; // Default channel of this device
@@ -21,6 +21,11 @@ cmddc1.encLEDMid = 0x08;
 cmddc1.encLEDOff = 0x00;
 cmddc1.encLEDCnt = 16; // Ring of 15 LEDs -> 16 for round maths, special handling for max
 cmddc1.encLEDUnit = 1/cmddc1.encLEDCnt;
+
+// Reduce the "stepper" effect to the affected parameter of the encoder in the
+// disadvantage of the coarse which begin bigger (Dirty hack :()
+// Must be a multiple that provide a round value from cmddc1.encLEDUnit value
+cmddc1.encLinFact = 1.6;
 
 cmddc1.FXCtrlCnt = 4;
 cmddc1.FXCtrlStart = 0x14;
@@ -228,16 +233,16 @@ cmddc1.encoderFXParam = function(channel, control, value, status, group) {
     
     // Grab the current parameter value
     var fxreal = engine.getParameter(param[0], param[1]);
-    
+
     // Increment the effect parameter value
     if(value == cmddc1.encRight) {
-        fxreal += (fxreal == 1 ? 0 : cmddc1.encLEDUnit);
+        fxreal += (fxreal < 1 ? (cmddc1.encLEDUnit / cmddc1.encLinFact) : 0);
         engine.setParameter(param[0], param[1], fxreal);
     }
     
     // Decrement the effect parameter value
     if(value == cmddc1.encLeft) {
-        fxreal -= (fxreal == 0 ? 0 : cmddc1.encLEDUnit);
+        fxreal -= (fxreal > 0 ? (cmddc1.encLEDUnit / cmddc1.encLinFact) : 0);
         engine.setParameter(param[0], param[1], fxreal);
     }
 };
@@ -270,11 +275,10 @@ cmddc1.encoderFXLitLED = function(value, group, control) {
  * Initialize FX related variables and connectControl the effects parameters
  */
 cmddc1.connectFXEncoders = function() {
-    var fxunit = 1;
     var fxctrl = cmddc1.FXCtrlStart;
     
     var grpref = "[EffectRack1_EffectUnit";
-    var grpara = "super1";
+    var grpara = "mix";
     
     for(var i=1; i <= cmddc1.FXCtrlCnt; i++) {
         cmddc1.FXControls[grpref+i+"]."+grpara] = fxctrl;

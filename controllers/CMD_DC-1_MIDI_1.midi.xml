@@ -16,148 +16,13 @@
                 <group></group>
                 <key>cmddc1.setCues</key>
                 <status>0x95</status>
-                <midino>0x2D</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddc1.cueMode</key>
-                <status>0x95</status>
-                <midino>0x16</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[QuickEffectRack1_[Channel1]].super1</group>
-                <key>cmddc1.encoderFXParam</key>
-                <status>0xB5</status>
-                <midino>0x11</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel4]</group>
-                <key>cmddc1.enableDeck</key>
-                <status>0x95</status>
-                <midino>0x07</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddc1.setCues</key>
-                <status>0x95</status>
-                <midino>0x2B</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddc1.setCues</key>
-                <status>0x95</status>
-                <midino>0x30</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit1].super1</group>
-                <key>cmddc1.encoderFXParam</key>
-                <status>0xB5</status>
-                <midino>0x14</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4_Effect1]</group>
-                <key>enabled</key>
-                <status>0x85</status>
-                <midino>0x13</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4_Effect3]</group>
-                <key>enabled</key>
-                <status>0x85</status>
-                <midino>0x13</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EffectRack1_EffectUnit4_Effect2]</group>
-                <key>enabled</key>
-                <status>0x85</status>
-                <midino>0x13</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddc1.setCues</key>
-                <status>0x95</status>
-                <midino>0x2E</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddc1.cueMode</key>
-                <status>0x95</status>
-                <midino>0x17</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[QuickEffectRack1_[Channel2]].super1</group>
-                <key>cmddc1.encoderFXParam</key>
-                <status>0xB5</status>
-                <midino>0x12</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>cmddc1.enableDeck</key>
-                <status>0x95</status>
-                <midino>0x00</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddc1.setCues</key>
-                <status>0x95</status>
-                <midino>0x24</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group></group>
-                <key>cmddc1.setCues</key>
-                <status>0x95</status>
                 <midino>0x31</midino>
                 <options>
                     <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2].super1</group>
+                <group>[EffectRack1_EffectUnit2].mix</group>
                 <key>cmddc1.encoderFXParam</key>
                 <status>0xB5</status>
                 <midino>0x15</midino>
@@ -175,7 +40,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1_Effect1]</group>
+                <group>[EffectRack1_EffectUnit1_Effect3]</group>
                 <key>enabled</key>
                 <status>0x95</status>
                 <midino>0x10</midino>
@@ -193,7 +58,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1_Effect3]</group>
+                <group>[EffectRack1_EffectUnit1_Effect1]</group>
                 <key>enabled</key>
                 <status>0x95</status>
                 <midino>0x10</midino>
@@ -247,7 +112,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit3].super1</group>
+                <group>[EffectRack1_EffectUnit3].mix</group>
                 <key>cmddc1.encoderFXParam</key>
                 <status>0xB5</status>
                 <midino>0x16</midino>
@@ -274,7 +139,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2_Effect3]</group>
+                <group>[EffectRack1_EffectUnit2_Effect1]</group>
                 <key>enabled</key>
                 <status>0x95</status>
                 <midino>0x11</midino>
@@ -292,7 +157,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2_Effect1]</group>
+                <group>[EffectRack1_EffectUnit2_Effect3]</group>
                 <key>enabled</key>
                 <status>0x95</status>
                 <midino>0x11</midino>
@@ -310,7 +175,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1_Effect1]</group>
+                <group>[EffectRack1_EffectUnit1_Effect3]</group>
                 <key>enabled</key>
                 <status>0x85</status>
                 <midino>0x10</midino>
@@ -328,7 +193,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit1_Effect3]</group>
+                <group>[EffectRack1_EffectUnit1_Effect1]</group>
                 <key>enabled</key>
                 <status>0x85</status>
                 <midino>0x10</midino>
@@ -364,7 +229,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit4].super1</group>
+                <group>[EffectRack1_EffectUnit4].mix</group>
                 <key>cmddc1.encoderFXParam</key>
                 <status>0xB5</status>
                 <midino>0x17</midino>
@@ -391,7 +256,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit3_Effect1]</group>
+                <group>[EffectRack1_EffectUnit3_Effect3]</group>
                 <key>enabled</key>
                 <status>0x95</status>
                 <midino>0x12</midino>
@@ -409,7 +274,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit3_Effect3]</group>
+                <group>[EffectRack1_EffectUnit3_Effect1]</group>
                 <key>enabled</key>
                 <status>0x95</status>
                 <midino>0x12</midino>
@@ -427,7 +292,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2_Effect3]</group>
+                <group>[EffectRack1_EffectUnit2_Effect1]</group>
                 <key>enabled</key>
                 <status>0x85</status>
                 <midino>0x11</midino>
@@ -445,7 +310,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit2_Effect1]</group>
+                <group>[EffectRack1_EffectUnit2_Effect3]</group>
                 <key>enabled</key>
                 <status>0x85</status>
                 <midino>0x11</midino>
@@ -508,7 +373,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit4_Effect1]</group>
+                <group>[EffectRack1_EffectUnit4_Effect2]</group>
                 <key>enabled</key>
                 <status>0x95</status>
                 <midino>0x13</midino>
@@ -526,7 +391,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit4_Effect2]</group>
+                <group>[EffectRack1_EffectUnit4_Effect1]</group>
                 <key>enabled</key>
                 <status>0x95</status>
                 <midino>0x13</midino>
@@ -544,7 +409,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit3_Effect1]</group>
+                <group>[EffectRack1_EffectUnit3_Effect3]</group>
                 <key>enabled</key>
                 <status>0x85</status>
                 <midino>0x12</midino>
@@ -562,7 +427,7 @@
                 </options>
             </control>
             <control>
-                <group>[EffectRack1_EffectUnit3_Effect3]</group>
+                <group>[EffectRack1_EffectUnit3_Effect1]</group>
                 <key>enabled</key>
                 <status>0x85</status>
                 <midino>0x12</midino>
@@ -570,21 +435,156 @@
                     <normal/>
                 </options>
             </control>
+            <control>
+                <group></group>
+                <key>cmddc1.setCues</key>
+                <status>0x95</status>
+                <midino>0x2D</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>cmddc1.cueMode</key>
+                <status>0x95</status>
+                <midino>0x16</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[QuickEffectRack1_[Channel1]].super1</group>
+                <key>cmddc1.encoderFXParam</key>
+                <status>0xB5</status>
+                <midino>0x11</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>cmddc1.enableDeck</key>
+                <status>0x95</status>
+                <midino>0x07</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>cmddc1.setCues</key>
+                <status>0x95</status>
+                <midino>0x2B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>cmddc1.setCues</key>
+                <status>0x95</status>
+                <midino>0x30</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1].mix</group>
+                <key>cmddc1.encoderFXParam</key>
+                <status>0xB5</status>
+                <midino>0x14</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4_Effect2]</group>
+                <key>enabled</key>
+                <status>0x85</status>
+                <midino>0x13</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4_Effect3]</group>
+                <key>enabled</key>
+                <status>0x85</status>
+                <midino>0x13</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4_Effect1]</group>
+                <key>enabled</key>
+                <status>0x85</status>
+                <midino>0x13</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>cmddc1.setCues</key>
+                <status>0x95</status>
+                <midino>0x2E</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>cmddc1.cueMode</key>
+                <status>0x95</status>
+                <midino>0x17</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[QuickEffectRack1_[Channel2]].super1</group>
+                <key>cmddc1.encoderFXParam</key>
+                <status>0xB5</status>
+                <midino>0x12</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>cmddc1.enableDeck</key>
+                <status>0x95</status>
+                <midino>0x00</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group></group>
+                <key>cmddc1.setCues</key>
+                <status>0x95</status>
+                <midino>0x24</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
         </controls>
         <outputs>
+            <output>
+                <group>[EffectRack1_EffectUnit3_Effect1]</group>
+                <key>enabled</key>
+                <status>0x95</status>
+                <midino>0x12</midino>
+                <on>0x01</on>
+                <minimum>0.1</minimum>
+            </output>
             <output>
                 <group>[Microphone]</group>
                 <key>show_microphone</key>
                 <status>0x95</status>
                 <midino>0x06</midino>
-                <on>0x01</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Samplers]</group>
-                <key>show_samplers</key>
-                <status>0x95</status>
-                <midino>0x05</midino>
                 <on>0x01</on>
                 <minimum>0.1</minimum>
             </output>
@@ -597,22 +597,6 @@
                 <minimum>0.1</minimum>
             </output>
             <output>
-                <group>[EffectRack1_EffectUnit2_Effect1]</group>
-                <key>enabled</key>
-                <status>0x95</status>
-                <midino>0x11</midino>
-                <on>0x01</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[EffectRack1_EffectUnit3_Effect1]</group>
-                <key>enabled</key>
-                <status>0x95</status>
-                <midino>0x12</midino>
-                <on>0x01</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
                 <group>[Master]</group>
                 <key>maximize_library</key>
                 <status>0x95</status>
@@ -621,18 +605,34 @@
                 <minimum>0.1</minimum>
             </output>
             <output>
-                <group>[EffectRack1]</group>
-                <key>show</key>
-                <status>0x95</status>
-                <midino>0x01</midino>
-                <on>0x01</on>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
                 <group>[EffectRack1_EffectUnit1_Effect1]</group>
                 <key>enabled</key>
                 <status>0x95</status>
                 <midino>0x10</midino>
+                <on>0x01</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit2_Effect1]</group>
+                <key>enabled</key>
+                <status>0x95</status>
+                <midino>0x11</midino>
+                <on>0x01</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Samplers]</group>
+                <key>show_samplers</key>
+                <status>0x95</status>
+                <midino>0x05</midino>
+                <on>0x01</on>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1]</group>
+                <key>show</key>
+                <status>0x95</status>
+                <midino>0x01</midino>
                 <on>0x01</on>
                 <minimum>0.1</minimum>
             </output>

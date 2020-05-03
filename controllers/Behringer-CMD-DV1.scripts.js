@@ -2,12 +2,11 @@ function cmddv1 () {}
 // Behringer CMD DV-1 Midi interface script for Mixxx Software
 // Author : Tiger <tiger@braineed.org> / Tiger #Mixxx@irc.freenode.net
 
-cmddv1.scriptVersion = "0.1.6";
+cmddv1.scriptVersion = "0.1.8";
 cmddv1.softVRequired  = "2.2.3";
 
-// Default channel of this device
-// We substitute 1 because count starts from 0 (See MIDI specs)
-cmddv1.defch = 7-1;
+cmddv1.defch  = 7; // Default channel of this device
+cmddv1.defch -= 1; // We substitute 1 because count starts from 0 (See MIDI specs)
 
 cmddv1.LEDCmd = 0x90; // Command Byte : Note On
 cmddv1.LEDOff = 0x00; // LEDs can't be turned off, the Off status is LEDs to Orange/Amber color
@@ -23,8 +22,13 @@ cmddv1.encLEDOff = 0x00;
 cmddv1.encLEDCnt = 16; // Ring of 15 LEDs -> 16 for round maths, special handling for max
 cmddv1.encLEDUnit = 1/cmddv1.encLEDCnt;
 
+// Reduce the "stepper" effect to the affected parameter of the encoder in the
+// disadvantage of the coarse which begin bigger (Dirty hack :()
+// Must be a multiple that provide a round value from cmddc1.encLEDUnit value
+cmddv1.encLinFact = 1.6;
+
 // Number of effects
-cmddv1.FXChainCnt = 19; // Hardcoded but it exists a member ( [EffectRack1].num_effectunits )
+cmddv1.FXChainCnt = 7; // Hardcoded but it exists a member ( [EffectRack1].num_effects )
 
 // Controls container for the effect chain selected
 // Encoders used for effect selection ( 2 physical * 4 virtual )
@@ -39,12 +43,9 @@ cmddv1.FXChainRawCnt = 2; // 2 Physical raw of effects
 cmddv1.FXChainRawPrefix = "Raw"; // Raw prefix string to insert into group string
 
 // Stores the physicals controls addresses with their affected special effects and parameters string
-cmddv1.SFXControls = {
-    "0x40":"[Channel1].pitch_adjust",
-    "0x41":"[QuickEffectRack1_[Channel1]].super1",
-    "0x42":"[QuickEffectRack1_[Channel2]].super1",
-    "0x43":"[Channel2].pitch_adjust"
-};
+cmddv1.SFXControls = {};
+cmddv1.SFXCtrlStart = 0x40;
+cmddv1.SFXCtrlCnt = 4;
 
 // Decks count
 cmddv1.deckCnt = 4;
@@ -318,7 +319,7 @@ cmddv1.setCues = function(channel, control, value, status, group) {
     if(cmddv1.getEnabledMode() !== undefined) {
         var changrp="[Channel";
         var cuepref = "hotcue_";
-        var cuesuf = [ 'clear','set','goto','gotoandplay' ];
+        var cuesuf = [ 'clear','activate','goto','gotoandplay' ];
         
         for(var i=1; i <= cmddv1.deckCnt; i++) {
             if(cmddv1.deckStatus[i] == true) {
@@ -403,13 +404,13 @@ cmddv1.encoderFXParam = function(channel, control, value, status, group) {
     
     // Increment the effect parameter value
     if(value == cmddv1.encRight) {
-        fxreal += (fxreal == 1 ? 0 : cmddv1.encLEDUnit);
+        fxreal += (fxreal < 1 ? (cmddv1.encLEDUnit / cmddv1.encLinFact) : 0);
         engine.setParameter(param[0], param[1], fxreal);
     }
     
     // Decrement the effect parameter value
     if(value == cmddv1.encLeft) {
-        fxreal -= (fxreal == 0 ? 0 : cmddv1.encLEDUnit);
+        fxreal -= (fxreal > 0 ? (cmddv1.encLEDUnit / cmddv1.encLinFact) : 0);
         engine.setParameter(param[0], param[1], fxreal);
     }
 };
@@ -494,16 +495,24 @@ cmddv1.connectFXEncoders = function() {
  * Initialize Special FX related variables and connectControl the effects parameters
  */
 cmddv1.connectSFXEncoders = function() {
-    for(var sfxctrl in cmddv1.SFXControls) {
-        var sfxgrparam = cmddv1.SFXControls[sfxctrl].split(".");
+    var grpref = "[EffectRack1_EffectUnit";
+    var sfxpara = "super1";
+    var eunit = 1;
+        
+    for(var sfxctrl = cmddv1.SFXCtrlStart; sfxctrl < (cmddv1.SFXCtrlStart + cmddv1.SFXCtrlCnt); sfxctrl++) {
+        var sfxgrp = grpref+eunit+"]";
+        // Initialize the SFX controls members
+        cmddv1.SFXControls[sfxctrl] = sfxgrp + "." + sfxpara;
         // Add an entry and affect a physical control address to the parameter string
         // A virtual line is added with same control for compatibility with encoderFXLitLED()
         for(var i=1; i <= cmddv1.FXChainRawCnt; i++) {
             cmddv1.FXControls[cmddv1.FXChainRawPrefix+i+cmddv1.SFXControls[sfxctrl]] = sfxctrl;
         }
-        var conn = engine.makeConnection(sfxgrparam[0], sfxgrparam[1], cmddv1.encoderFXLitLED);
+        var conn = engine.makeConnection(sfxgrp, sfxpara, cmddv1.encoderFXLitLED);
         // Init LEDs of SFX Encoders
-        conn.trigger(sfxgrparam[0], sfxgrparam[1]);
+        conn.trigger(sfxgrp, sfxpara);
+        
+        eunit++;
     }
 };
 
