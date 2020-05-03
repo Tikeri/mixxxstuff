@@ -143,7 +143,7 @@ cmddc1.cueMode = function(channel, control, value, status, group) {
     
     cmddc1.initCueMode();
     
-    var cueModes = [ 'set','goto','gotoandplay', 'clear' ];
+    var cueModes = [ 'activate','goto','gotoandplay', 'clear' ];
     
     switch(control) {
         case cmddc1.setCueCtrl:
@@ -182,8 +182,8 @@ cmddc1.setCues = function(channel, control, value, status, group) {
                 
                 var LEDColor = undefined;
                 
-                if(cmddc1.cueActMode == "set" ||  cmddc1.cueActMode == "clear") {
-                    if(cmddc1.cueActMode == "set") {
+                if(cmddc1.cueActMode == "activate" ||  cmddc1.cueActMode == "clear") {
+                    if(cmddc1.cueActMode == "activate") {
                         LEDColor = cmddc1.LEDBlue;
                     } else {
                         LEDColor = cmddc1.LEDOff;
